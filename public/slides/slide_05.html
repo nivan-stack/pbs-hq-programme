@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1280">
+  <title>Phase 3: Fit Out & First Fix</title>
+  <link rel="stylesheet" href="global.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { margin: 0; }
+    .gantt-bar {
+      height: 22px;
+      border-radius: 3px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  </style>
+</head>
+<body>
+  <div class="slide" style="width:1280px; height:720px; overflow:hidden; padding: 64px 68px 68px 68px; background: var(--bg); position: relative;">
+
+    <!-- Top section -->
+    <div style="margin-bottom: 10px;">
+      <span style="font-family: var(--font-mono); color: #1B2A4A; font-size: 11px; letter-spacing: 2px; text-transform: uppercase;">PHASE 3  ·  OCTOBER 2026</span>
+    </div>
+    <h1 style="font-family: var(--font-heading); font-weight: 700; font-size: 28px; color: var(--primary); margin-bottom: 8px;">Fit Out &amp; First Fix Installation</h1>
+    <div style="width: 48px; height: 4px; background: var(--primary); border-radius: 2px; margin-bottom: 24px;"></div>
+
+    <!-- Table + Note side by side -->
+    <div style="display: flex; gap: 24px; margin-bottom: 24px;">
+
+      <!-- Data Table Card -->
+      <div class="card" style="flex: 1; padding: 0; overflow: hidden;">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th style="width: 44%;">Task Name</th>
+              <th style="width: 16%;">Duration</th>
+              <th style="width: 20%;">Start</th>
+              <th style="width: 20%;">Finish</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="font-weight: 500;">Cable Tray Installation</td>
+              <td class="mono">5 days</td>
+              <td class="mono">Mon 12/10/26</td>
+              <td class="mono">Sat 17/10/26</td>
+            </tr>
+            <tr>
+              <td style="font-weight: 500;">Main Electrical Switchboard Install</td>
+              <td class="mono">6 days</td>
+              <td class="mono">Mon 12/10/26</td>
+              <td class="mono">Mon 19/10/26</td>
+            </tr>
+            <tr>
+              <td style="font-weight: 500;">Lighting Conduit &amp; Hanging Unistrut Install</td>
+              <td class="mono">5 days</td>
+              <td class="mono">Sat 17/10/26</td>
+              <td class="mono">Fri 23/10/26</td>
+            </tr>
+            <tr>
+              <td style="font-weight: 500;">Distribution Board Install (Build B)</td>
+              <td class="mono">4 days</td>
+              <td class="mono">Sat 17/10/26</td>
+              <td class="mono">Thu 22/10/26</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Note card -->
+      <div style="width: 280px; flex-shrink: 0; display: flex; align-items: flex-start;">
+        <div style="background: #E8EDF5; border-left: 4px solid var(--primary); border-radius: 0 6px 6px 0; padding: 18px 20px;">
+          <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 10px;">
+            <span class="material-icons" style="font-size: 16px; color: var(--primary);">info</span>
+            <span style="font-family: var(--font-heading); font-weight: 600; font-size: 12px; color: var(--primary); text-transform: uppercase; letter-spacing: 0.5px;">Note</span>
+          </div>
+          <p style="font-size: 12px; color: var(--text-mid); font-style: italic; line-height: 1.6;">Cable tray and switchboard installation run concurrently. Lighting conduit and distribution board installation follow on from cable tray completion.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gantt Timeline -->
+    <div class="card" style="padding: 20px 24px;">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px;">
+        <span class="material-icons" style="font-size: 16px; color: var(--text-mid);">schedule</span>
+        <span style="font-family: var(--font-heading); font-weight: 600; font-size: 13px; color: var(--text-dark);">Timeline — October 2026</span>
+      </div>
+      <div style="position: relative; height: 24px; background: var(--row-alt); border-radius: 4px; margin-left: 80px; margin-right: 20px;">
+        <!-- Tick marks and date labels -->
+        <div style="position: absolute; left: 0; top: -20px; transform: translateX(-50%);">
+          <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-mid);">12</span>
+        </div>
+        <div style="position: absolute; left: 22.2%; top: 0; bottom: 0; width: 1px; background: #CCC; transform: translateX(-50%);">
+          <div style="position: absolute; top: -20px; left: 0; transform: translateX(-50%);">
+            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-mid);">14</span>
+          </div>
+        </div>
+        <div style="position: absolute; left: 44.4%; top: 0; bottom: 0; width: 1px; background: #CCC; transform: translateX(-50%);">
+          <div style="position: absolute; top: -20px; left: 0; transform: translateX(-50%);">
+            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-mid);">17</span>
+          </div>
+        </div>
+        <div style="position: absolute; left: 66.7%; top: 0; bottom: 0; width: 1px; background: #CCC; transform: translateX(-50%);">
+          <div style="position: absolute; top: -20px; left: 0; transform: translateX(-50%);">
+            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-mid);">19</span>
+          </div>
+        </div>
+        <div style="position: absolute; right: 0; top: -20px; transform: translateX(50%);">
+          <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-mid);">23</span>
+        </div>
+
+        <!-- Task bars -->
+        <!-- Cable Tray: 12-17 (5 days, 0% to 44.4%) -->
+        <div class="gantt-bar" style="left: 0; width: 44.4%; background: var(--accent); opacity: 0.9; top: -18px;"></div>
+        <!-- Main Switchboard: 12-19 (6 days, 0% to 55.6%) -->
+        <div class="gantt-bar" style="left: 0; width: 55.6%; background: var(--primary); opacity: 0.9; top: -18px; margin-top: 28px;"></div>
+        <!-- Lighting Conduit: 17-23 (5 days, 44.4% to 100%) -->
+        <div class="gantt-bar" style="left: 44.4%; width: 55.6%; background: var(--teal); opacity: 0.9; top: -18px; margin-top: 56px;"></div>
+        <!-- Distribution Board: 17-22 (4 days, 44.4% to 88.9%) -->
+        <div class="gantt-bar" style="left: 44.4%; width: 44.5%; background: var(--red); opacity: 0.9; top: -18px; margin-top: 84px;"></div>
+      </div>
+
+      <!-- Legend -->
+      <div style="display: flex; gap: 20px; margin-top: 8px; margin-left: 80px; flex-wrap: wrap;">
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <div style="width: 14px; height: 10px; background: var(--accent); border-radius: 2px;"></div>
+          <span style="font-size: 11px; color: var(--text-mid); font-family: var(--font-body);">Cable Tray</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <div style="width: 14px; height: 10px; background: var(--primary); border-radius: 2px;"></div>
+          <span style="font-size: 11px; color: var(--text-mid); font-family: var(--font-body);">Switchboard</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <div style="width: 14px; height: 10px; background: var(--teal); border-radius: 2px;"></div>
+          <span style="font-size: 11px; color: var(--text-mid); font-family: var(--font-body);">Lighting Conduit</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <div style="width: 14px; height: 10px; background: var(--red); border-radius: 2px;"></div>
+          <span style="font-size: 11px; color: var(--text-mid); font-family: var(--font-body);">Dist. Board</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom accent bar -->
+    <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: var(--accent);"></div>
+  </div>
+</body>
+</html>

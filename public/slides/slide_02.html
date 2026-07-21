@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1280">
+  <title>Electrical Work Breakdown</title>
+  <link rel="stylesheet" href="global.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { margin: 0; padding: 0; overflow: hidden; }
+    .slide {
+      width: 1280px;
+      height: 720px;
+      overflow: hidden;
+      position: relative;
+      background: #F5F5F0;
+      padding: 60px 72px 72px 72px;
+    }
+    .footer-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: #E8912D;
+    }
+    .phase-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 14px;
+      border-radius: 4px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    .phase-badge.orange { background: #FDF2E6; color: #C47A22; border: 1px solid #F0D9B5; }
+    .phase-badge.teal { background: #E8F5F1; color: #2E7D6F; border: 1px solid #B8DED5; }
+    .phase-badge.blue { background: #E8EDF5; color: #1B2A4A; border: 1px solid #C5CDE0; }
+    .phase-badge.red { background: #FDECEB; color: #C0392B; border: 1px solid #F0C4C0; }
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E2E2E0;
+      border-radius: 8px;
+      padding: 24px;
+    }
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 24px;
+      margin-top: 24px;
+      height: 478px;
+    }
+    .card-title {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: #1B2A4A;
+      margin-top: 10px;
+      line-height: 1.35;
+    }
+    .card-bullets {
+      margin-top: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .card-bullet {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 13px;
+      color: #4A4A5A;
+      line-height: 1.4;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .bullet-dot {
+      width: 4px;
+      height: 4px;
+      min-width: 4px;
+      border-radius: 50%;
+      background: #E8912D;
+      margin-top: 7px;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide">
+    <!-- Header -->
+    <div style="font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 400; color: #E8912D; letter-spacing: 2px; text-transform: uppercase;">
+      ELECTRICAL SCOPE
+    </div>
+    <h1 style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 28px; color: #1B2A4A; margin-top: 6px; line-height: 1.25;">
+      Sigatoka Electrical Work Breakdown
+    </h1>
+    <div style="width: 48px; height: 4px; background: #E8912D; border-radius: 2px; margin-top: 8px;"></div>
+
+    <!-- 2x2 Grid -->
+    <div class="grid-container">
+
+      <!-- Phase 1 -->
+      <div class="card">
+        <span class="phase-badge orange">PHASE 1  ·  JULY 2026</span>
+        <div class="card-title">Temporary Power &amp; Site Establishment</div>
+        <div class="card-bullets">
+          <div class="card-bullet">
+            <span class="bullet-dot"></span>
+            <span>Temp Transformer Supply, Install &amp; Commission</span>
+          </div>
+          <div class="card-bullet">
+            <span class="bullet-dot"></span>
+            <span>Temporary Power Board Distribution (P1, P2, P3, P4)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 2 -->
+      <div class="card">
+        <span class="phase-badge teal">PHASE 2  ·  JULY 2026</span>
+        <div class="card-title">Services Infrastructure</div>
+        <div class="card-bullets">
+          <div class="card-bullet">
+            <span class="bullet-dot" style="background: #2E7D6F;"></span>
+            <span>Electrical Mains Grid 1 &amp; 13 (Building B)</span>
+          </div>
+          <div class="card-bullet">
+            <span class="bullet-dot" style="background: #2E7D6F;"></span>
+            <span>Road Crossing Mains</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 3 -->
+      <div class="card">
+        <span class="phase-badge blue">PHASE 3  ·  OCTOBER 2026</span>
+        <div class="card-title">Fit Out &amp; First Fix</div>
+        <div class="card-bullets">
+          <div class="card-bullet">
+            <span class="bullet-dot" style="background: #1B2A4A;"></span>
+            <span>Main Switchboard Installation</span>
+          </div>
+          <div class="card-bullet">
+            <span class="bullet-dot" style="background: #1B2A4A;"></span>
+            <span>Cable Tray &amp; Lighting Conduit Install</span>
+          </div>
+          <div class="card-bullet">
+            <span class="bullet-dot" style="background: #1B2A4A;"></span>
+            <span>Distribution Board Installation (Building B)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 4 -->
+      <div class="card">
+        <span class="phase-badge red">PHASE 4  ·  NOVEMBER 2026</span>
+        <div class="card-title">Commissioning &amp; Handover</div>
+        <div class="card-bullets">
+          <div class="card-bullet">
+            <span class="bullet-dot" style="background: #C0392B;"></span>
+            <span>Pad Mount Transformer Install &amp; Commission (Shared with EFL)</span>
+          </div>
+          <div class="card-bullet">
+            <span class="bullet-dot" style="background: #C0392B;"></span>
+            <span>Switchboard Testing &amp; Commissioning</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bar"></div>
+  </div>
+</body>
+</html>

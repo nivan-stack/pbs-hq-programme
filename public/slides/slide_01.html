@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1280">
+  <title>CONSTRUCTION PROGRAMME — Cover</title>
+  <link rel="stylesheet" href="global.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { margin: 0; padding: 0; overflow: hidden; }
+    .slide {
+      width: 1280px;
+      height: 720px;
+      overflow: hidden;
+      position: relative;
+      background: #1B2A4A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .slide-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://sfile.chatglm.cn/images-ppt/0c840751ed69.jpeg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.18;
+      aria-hidden: true;
+    }
+    .slide-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(27, 42, 74, 0.82) 0%,
+        rgba(27, 42, 74, 0.92) 50%,
+        rgba(27, 42, 74, 0.97) 100%
+      );
+      aria-hidden: true;
+    }
+    .accent-top {
+      position: absolute;
+      top: 60px;
+      left: 72px;
+      width: 48px;
+      height: 4px;
+      background: #E8912D;
+      border-radius: 2px;
+      aria-hidden: true;
+    }
+    .footer-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: #E8912D;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide">
+    <div class="slide-bg" data-decor></div>
+    <div class="slide-overlay" data-decor></div>
+    <div class="accent-top" data-decor></div>
+
+    <div style="position: relative; z-index: 2; text-align: center; display: flex; flex-direction: column; align-items: center;">
+      <h1 style="font-family: 'Inter', sans-serif; font-weight: 800; font-size: 44px; color: #FFFFFF; letter-spacing: 4px; text-transform: uppercase; line-height: 1.15;">
+        CONSTRUCTION PROGRAMME
+      </h1>
+      <p style="font-family: 'Inter', sans-serif; font-weight: 400; font-size: 28px; color: #FFFFFF; margin-top: 12px; letter-spacing: 0.5px;">
+        PBS HQ Construction
+      </p>
+      <div style="width: 120px; height: 1px; background: rgba(255,255,255,0.25); margin-top: 24px;" data-decor></div>
+      <p style="font-family: 'Inter', sans-serif; font-weight: 300; font-size: 18px; color: rgba(255,255,255,0.75); margin-top: 20px; letter-spacing: 0.3px;">
+        Sigatoka Electrical Works — Buildings A&amp;B
+      </p>
+    </div>
+
+    <div style="position: absolute; bottom: 36px; left: 0; right: 0; text-align: center; z-index: 2;">
+      <p style="font-family: 'DM Mono', monospace; font-weight: 400; font-size: 12px; color: rgba(255,255,255,0.5); letter-spacing: 1px;">
+        1 June 2026  |  SWBP — Buildings A&amp;B (PBS HQ)
+      </p>
+    </div>
+
+    <div class="footer-bar"></div>
+  </div>
+</body>
+</html>

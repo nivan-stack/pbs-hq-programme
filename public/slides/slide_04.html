@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1280">
+  <title>Phase 2: Services Infrastructure</title>
+  <link rel="stylesheet" href="global.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { margin: 0; padding: 0; }
+    .note-card-teal {
+      background: #E8F5F1;
+      border-left: 4px solid var(--teal);
+      border-radius: 6px;
+      padding: 14px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .gantt-track {
+      position: relative;
+      height: 52px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .gantt-bar {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 14px;
+      border-radius: 3px;
+    }
+    .gantt-label {
+      position: absolute;
+      top: 6px;
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-dark);
+      white-space: nowrap;
+    }
+    .gantt-tick-label {
+      position: absolute;
+      bottom: 5px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-mid);
+      transform: translateX(-50%);
+    }
+    .gantt-tick {
+      position: absolute;
+      bottom: 16px;
+      width: 1px;
+      height: 8px;
+      background: var(--card-border);
+    }
+  </style>
+</head>
+<body>
+  <div class="slide" style="width:1280px; height:720px; overflow:hidden; display:flex; flex-direction:column;">
+
+    <!-- Header -->
+    <div style="margin-bottom: 8px;">
+      <div class="section-num" style="color: var(--teal);">PHASE 2  ·  JULY 2026</div>
+      <h1 style="font-family: var(--font-heading); font-weight: 700; font-size: 28px; color: var(--primary); margin-top: 6px;">Services Infrastructure (Mains)</h1>
+      <div class="accent-line teal" style="margin-top: 8px;"></div>
+    </div>
+
+    <!-- Data table card -->
+    <div class="card" style="padding: 0; overflow: hidden; margin-top: 24px;">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 46%;">Task Name</th>
+            <th style="width: 14%;">Duration</th>
+            <th style="width: 20%;">Start</th>
+            <th style="width: 20%;">Finish</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Electrical Mains Grid 1 &amp; 13 - Build B</td>
+            <td class="mono">0.85 days</td>
+            <td class="mono">Wed 8/07/26</td>
+            <td class="mono">Thu 9/07/26</td>
+          </tr>
+          <tr>
+            <td>Elect Mains Rd Crossing (With SW)</td>
+            <td class="mono">0.75 days</td>
+            <td class="mono">Fri 17/07/26</td>
+            <td class="mono">Fri 17/07/26</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Note card -->
+    <div class="note-card-teal" style="margin-top: 20px;">
+      <span class="material-icons" style="font-size: 20px; color: var(--teal); margin-top: 1px;">info</span>
+      <p style="font-size: 14px; color: var(--text-dark); line-height: 1.5;">
+        Note: These tasks are coordinated early with PBS Civil for trenching and road crossings.
+      </p>
+    </div>
+
+    <!-- Gantt Timeline -->
+    <div style="margin-top: 24px; flex: 1; display: flex; flex-direction: column;">
+      <div style="font-family: var(--font-heading); font-size: 12px; font-weight: 600; color: var(--primary); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px;">July 2026 — Timeline</div>
+
+      <!-- Legend -->
+      <div style="display: flex; gap: 20px; margin-bottom: 10px;">
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span style="width: 12px; height: 12px; border-radius: 3px; background: var(--accent); display: inline-block;"></span>
+          <span style="font-size: 11px; color: var(--text-mid);">Mains Grid 1 &amp; 13</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span style="width: 12px; height: 12px; border-radius: 3px; background: var(--teal); display: inline-block;"></span>
+          <span style="font-size: 11px; color: var(--text-mid);">Rd Crossing</span>
+        </div>
+      </div>
+
+      <!-- Gantt track -->
+      <div class="gantt-track" style="flex: 1;">
+        <!-- Track area: left padding 60px for labels, right padding 24px, timeline spans 8–23 July -->
+        <!-- Usable width: 1280 - 64*2 - 60 - 24 = 1068px. But within the track, use internal padding -->
+        <!-- Let's compute positions within the gantt-track. Left label area = 170px. Right pad = 20px. -->
+        <!-- Timeline bar area width = track width - 190px. Total days 8-23 = 15 days, each day = (width)/15 -->
+
+        <!-- Task 1: Mains Grid 1 & 13 — Jul 8 to Jul 9 (2 days: 8, 9) -->
+        <!-- Task 2: Rd Crossing — Jul 17 (1 day) -->
+
+        <!-- Bar positions calculated relative to the label area -->
+        <!-- label area: 170px from left, right pad: 20px, total bar area ~1100px, per day ~73px -->
+
+        <!-- Task 1 label -->
+        <div class="gantt-label" style="left: 12px; top: 10px; font-size: 11px; color: var(--text-mid);">Mains Grid 1 &amp; 13</div>
+        <!-- Task 1 bar: day 8 = start, spans 2 days → 2 * 73 = 146px -->
+        <div class="gantt-bar" style="left: 190px; width: 146px; background: var(--accent); top: 50%;"></div>
+
+        <!-- Task 2 label -->
+        <div class="gantt-label" style="left: 12px; top: 30px; font-size: 11px; color: var(--text-mid);">Rd Crossing</div>
+        <!-- Task 2 bar: day 17 = offset (17-8) * 73 = 657px, spans 1 day = 73px -->
+        <div class="gantt-bar" style="left: 847px; width: 73px; background: var(--teal); top: calc(50% + 16px);"></div>
+
+        <!-- Tick marks at days 8, 12, 16, 20, 23 -->
+        <!-- Day 8: offset 0 → x=190 -->
+        <div class="gantt-tick" style="left: 190px;"></div>
+        <div class="gantt-tick-label" style="left: 190px;">8</div>
+
+        <!-- Day 12: offset 4 → 190 + 4*73 = 482 -->
+        <div class="gantt-tick" style="left: 482px;"></div>
+        <div class="gantt-tick-label" style="left: 482px;">12</div>
+
+        <!-- Day 16: offset 8 → 190 + 8*73 = 774 -->
+        <div class="gantt-tick" style="left: 774px;"></div>
+        <div class="gantt-tick-label" style="left: 774px;">16</div>
+
+        <!-- Day 20: offset 12 → 190 + 12*73 = 1066 -->
+        <div class="gantt-tick" style="left: 1066px;"></div>
+        <div class="gantt-tick-label" style="left: 1066px;">20</div>
+
+        <!-- Day 23: offset 15 → 190 + 15*73 = 1285 — clamp to within track -->
+        <div class="gantt-tick" style="left: 1258px;"></div>
+        <div class="gantt-tick-label" style="left: 1258px;">23</div>
+      </div>
+    </div>
+
+    <!-- Footer accent bar -->
+    <div class="footer-bar"></div>
+  </div>
+</body>
+</html>
