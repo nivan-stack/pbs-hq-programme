@@ -71,14 +71,15 @@ INSTRUCTIONS:
 - Use bullet points for lists.
 - If the user asks you to modify the presentation, explain what changes would be needed.`
 
+const apiKey = "AQ.Ab8RN6JENnmK__w3zh_5regyrIdMxb6u0-rYzfT0rrxqc4X0fw"
+
 export async function POST(req: NextRequest) {
   try {
     const { messages, context } = await req.json()
-    const apiKey = "AIzaSyAb8RN6JAdFwPL9RVtZ1BJbcBfATbhEU9NS8f0dpyYFJRnLnfhQ"
 
     if (!apiKey) {
       return NextResponse.json({
-        reply: 'AI Assistant is not configured. Please set the GEMINI_API_KEY environment variable.'
+        reply: 'AI Assistant is not configured.'
       })
     }
 
@@ -106,8 +107,8 @@ export async function POST(req: NextRequest) {
 
     if (!response.ok) {
       const err = await response.text()
-      console.error('Gemini API error:', err)
-      return NextResponse.json({ reply: 'AI service is temporarily unavailable. Please try again.' }, { status: 503 })
+      console.error('Gemini API error:', response.status, err)
+      return NextResponse.json({ reply: `AI Error (${response.status}): ${err}` }, { status: 503 })
     }
 
     const data = await response.json()
@@ -115,6 +116,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ reply })
   } catch (error: any) {
     console.error('Chat API error:', error)
-    return NextResponse.json({ reply: 'An error occurred. Please try again.' }, { status: 500 })
+    return NextResponse.json({ reply: `Error: ${error.message}` }, { status: 500 })
   }
 }
