@@ -71,29 +71,14 @@ INSTRUCTIONS:
 - Use bullet points for lists.
 - If the user asks you to modify the presentation, explain what changes would be needed.`
 
-let zaiInstance: any = null
-
-async function getZAI() {
-  if (!zaiInstance) {
-    try {
-      const ZAI = (await import('z-ai-web-dev-sdk')).default
-      zaiInstance = await ZAI.create()
-    } catch {
-      return null
-    }
-  }
-  return zaiInstance
-}
-
 export async function POST(req: NextRequest) {
   try {
     const { messages, context } = await req.json()
+    const apiKey = process.env.GEMINI_API_KEY
 
-    const zai = await getZAI()
-
-    if (!zai) {
+    if (!apiKey) {
       return NextResponse.json({
-        reply: 'AI Assistant is not available in this deployment environment. Please use the presentation in the original hosted environment for AI-powered assistance.'
+        reply: 'AI Assistant is not configured. Please set the GEMINI_API_KEY environment variable.'
       })
     }
 
@@ -101,14 +86,32 @@ export async function POST(req: NextRequest) {
       ? `${SYSTEM_PROMPT}\n\nADDITIONAL CONTEXT FROM CURRENT SLIDE EDITS:\n${context}`
       : SYSTEM_PROMPT
 
-    const response = await zai.chat.completions.create({
-      messages: [
-        { role: 'system', content: systemMsg },
-        ...messages,
-      ],
-    })
+    const contents = messages.map((m: { role: string; content: string }) => ({
+      role: m.role === 'assistant' ? 'model' : 'user',
+      parts: [{ text: m.content }]
+    }))
 
-    const reply = response.choices[0]?.message?.content || 'Sorry, I could not generate a response.'
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          system_instruction: { parts: [{ text: systemMsg }] },
+          contents,
+          generationConfig: { temperature: 0.7, maxOutputTokens: 1024 }
+        })
+      }
+    )
+
+    if (!response.ok) {
+      const err = await response.text()
+      console.error('Gemini API error:', err)
+      return NextResponse.json({ reply: 'AI service is temporarily unavailable. Please try again.' }, { status: 503 })
+    }
+
+    const data = await response.json()
+    const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || 'Sorry, I could not generate a response.'
     return NextResponse.json({ reply })
   } catch (error: any) {
     console.error('Chat API error:', error)
