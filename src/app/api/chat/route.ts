@@ -71,7 +71,7 @@ INSTRUCTIONS:
 - Use bullet points for lists.
 - If the user asks you to modify the presentation, explain what changes would be needed.`
 
-const apiKey = "AQ.Ab8RN6JENnmK__w3zh_5regyrIdMxb6u0-rYzfT0rrxqc4X0fw"
+const apiKey = "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"
 
 export async function POST(req: NextRequest) {
   try {
@@ -87,32 +87,34 @@ export async function POST(req: NextRequest) {
       ? `${SYSTEM_PROMPT}\n\nADDITIONAL CONTEXT FROM CURRENT SLIDE EDITS:\n${context}`
       : SYSTEM_PROMPT
 
-    const contents = messages.map((m: { role: string; content: string }) => ({
-      role: m.role === 'assistant' ? 'model' : 'user',
-      parts: [{ text: m.content }]
-    }))
-
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
+      'https://api.groq.com/openai/v1/chat/completions',
       {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Authorization': `Bearer ${apiKey}`,
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({
-          system_instruction: { parts: [{ text: systemMsg }] },
-          contents,
-          generationConfig: { temperature: 0.7, maxOutputTokens: 1024 }
-        })
+          model: 'llama-3.3-70b-versatile',
+          messages: [
+            { role: 'system', content: systemMsg },
+            ...messages,
+          ],
+          temperature: 0.3,
+          max_tokens: 1024,
+        }),
       }
     )
 
     if (!response.ok) {
       const err = await response.text()
-      console.error('Gemini API error:', response.status, err)
-      return NextResponse.json({ reply: `AI Error (${response.status}): ${err}` }, { status: 503 })
+      console.error('Groq API error:', response.status, err)
+      return NextResponse.json({ reply: `AI Error (${response.status}). Please try again.` }, { status: 503 })
     }
 
     const data = await response.json()
-    const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || 'Sorry, I could not generate a response.'
+    const reply = data.choices[0]?.message?.content || 'Sorry, I could not generate a response.'
     return NextResponse.json({ reply })
   } catch (error: any) {
     console.error('Chat API error:', error)
