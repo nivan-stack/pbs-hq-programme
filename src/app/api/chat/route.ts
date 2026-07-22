@@ -74,7 +74,7 @@ INSTRUCTIONS:
 export async function POST(req: NextRequest) {
   try {
     const { messages, context } = await req.json()
-    const apiKey = AQ.Ab8RN6JAdFwPL9RVtZ1BJbcBfATbhEU9NS8fOdpyYFJRnLnfhQ
+    const apiKey = "AIzaSy.Ab8RN6JAdFwPL9RVtZ1BJbcBfATbhEU9NS8f0dpyYFJRnLnfhQ"
 
     if (!apiKey) {
       return NextResponse.json({
